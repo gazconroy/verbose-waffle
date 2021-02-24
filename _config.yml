@@ -1,10 +1,3 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
@@ -13,15 +6,19 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
-email:
+locale: "en-GB"
+title: Digital comma
+subtitle: "API documentation, technical writing and intranet management"
+email: info@digital-comma.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
+  Where 'digital' meets 'communications'
+url: "https://gazconroy.github.io"
+baseurl: "/digital-comma"
+github_username: gazconroy
+repository: "gazconroy/digital-comma"
 minimal_mistakes_skin: default
+teaser: /assets/images/fallback-teaser.png
+logo: "/assets/images/logo.png"
 search: true
 
 # Build settings
@@ -31,22 +28,35 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: GB
+breadcrumbs: true
+
+search_provider: algolia
+algolia:
+  application_id: WR91W1HO65
+  index_name: prod_digital-comma
+  search_only_api_key: 018663ac9b4509bbacab9489df1a7bdf
+  powered_by: false
+
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "GTM-NQWHCVC"
+    anonymize_ip: false # default
+
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "digital-comma"
 
 include:
   - _pages
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
 
 # Plugins (previously gems:)
 plugins:
@@ -56,36 +66,37 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-archives
 
 author:
-  name   : "First Lastname"
+  name   : "Gary Conroy"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "Technical writer specialising in APIs, intranet, digital workplace, technical content delivery"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://"
+      url: "https://digital-comma.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/gazconroy"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/gazconroy"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://instagram.com/gazconroyster"
 
 footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/gazconroy"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/gazconroy"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://instagram.com/gazconroyster"
 
 defaults:
   # _posts
@@ -99,6 +110,7 @@ defaults:
       comments: true
       share: true
       related: true
+      show_date: true
   # _pages
   - scope:
       path: "_pages"
@@ -113,3 +125,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development  # disable compression in dev environment
